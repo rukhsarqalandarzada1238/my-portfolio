@@ -1,24 +1,17 @@
-
-/* =========================================
+/* ==========================================
    RUKHSAR QALANDARZADA - PORTFOLIO
-   JavaScript functionality
-========================================= */
+   JavaScript
+========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ========================================
+  // MOBILE NAVIGATION
+  // ========================================
+
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
   const navItems = document.querySelectorAll(".nav-link");
-  const sections = document.querySelectorAll("main section[id]");
-  const contactForm = document.getElementById("contactForm");
-  const formStatus = document.getElementById("formStatus");
-  const currentYear = document.getElementById("currentYear");
 
-  // Update copyright year
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-  }
-
-  // Mobile navigation
   function closeMenu() {
     if (!menuToggle || !navLinks) return;
 
@@ -29,28 +22,35 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("menu-open");
   }
 
-  function toggleMenu() {
+  function openMenu() {
     if (!menuToggle || !navLinks) return;
 
-    const isOpen = navLinks.classList.toggle("open");
-
-    menuToggle.classList.toggle("open", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
-
-    document.body.classList.toggle("menu-open", isOpen);
+    menuToggle.classList.add("open");
+    navLinks.classList.add("open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation menu");
+    document.body.classList.add("menu-open");
   }
 
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
 
-    navItems.forEach((link) => {
-      link.addEventListener("click", closeMenu);
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
+    // Close menu after clicking a navigation link
+    navItems.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Close the menu when clicking outside it
     document.addEventListener("click", (event) => {
       const clickedInsideMenu = navLinks.contains(event.target);
       const clickedToggle = menuToggle.contains(event.target);
@@ -60,12 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Close the menu with Escape
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         closeMenu();
+        menuToggle.focus();
       }
     });
 
+    // Reset navigation when returning to desktop width
     window.addEventListener("resize", () => {
       if (window.innerWidth > 800) {
         closeMenu();
@@ -73,58 +76,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Highlight the active navigation link
-  function setActiveLink(id) {
-    navItems.forEach((link) => {
-      const target = link.getAttribute("href");
+  // ========================================
+  // SMOOTH SCROLLING
+  // ========================================
 
-      link.classList.toggle("active", target === `#${id}`);
-    });
-  }
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href");
 
-  if ("IntersectionObserver" in window && sections.length > 0) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+      if (!targetId || targetId === "#") return;
 
-        if (visibleSections.length > 0) {
-          setActiveLink(visibleSections[0].target.id);
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        event.preventDefault();
+
+        target.scrollIntoView({
+          behavior: window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+
+        // Update the URL hash without jumping
+        if (window.location.hash !== targetId) {
+          history.replaceState(null, "", targetId);
         }
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -55% 0px",
-        threshold: [0, 0.15, 0.3, 0.5]
       }
-    );
-
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
     });
-  } else {
-    // Fallback for browsers without IntersectionObserver
-    window.addEventListener("scroll", () => {
-      let currentSection = "home";
+  });
 
-      sections.forEach((section) => {
-        if (window.scrollY >= section.offsetTop - 180) {
-          currentSection = section.id;
-        }
-      });
+  // ========================================
+  // REVEAL ANIMATIONS
+  // ========================================
 
-      setActiveLink(currentSection);
-    });
-  }
-
-  // Reveal elements when they enter the viewport
   const revealElements = document.querySelectorAll(".reveal");
 
-  if ("IntersectionObserver" in window) {
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+  } else {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -136,75 +134,230 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -35px 0px"
+        rootMargin: "0px 0px -35px 0px",
       }
     );
 
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
+  }
+
+  // ========================================
+  // ACTIVE NAVIGATION ON SCROLL
+  // ========================================
+
+  const sections = document.querySelectorAll(
+    "main section[id], header[id]"
+  );
+
+  if ("IntersectionObserver" in window && navItems.length > 0) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+
+            navItems.forEach((link) => {
+              const linkTarget = link.getAttribute("href");
+              const isActive = linkTarget === `#${currentId}`;
+
+              link.classList.toggle("active", isActive);
+
+              if (isActive) {
+                link.setAttribute("aria-current", "location");
+              } else {
+                link.removeAttribute("aria-current");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
     });
   }
 
-  // Contact form
-  // This form opens the visitor's email app.
-  // It does not send messages directly from the website.
-  if (contactForm && formStatus) {
+  // ========================================
+  // CURRENT YEAR IN FOOTER
+  // ========================================
+
+  const currentYear = document.getElementById("currentYear");
+
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+  }
+
+  // ========================================
+  // CONTACT FORM
+  // ========================================
+
+  const contactForm = document.getElementById("contactForm");
+  const formStatus = document.getElementById("formStatus");
+
+  if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      formStatus.textContent = "";
-      formStatus.className = "form-status";
+      if (formStatus) {
+        formStatus.textContent = "";
+        formStatus.className = "form-status";
+      }
 
+      // Validate form fields
       if (!contactForm.checkValidity()) {
         contactForm.reportValidity();
         return;
       }
 
-      const formData = new FormData(contactForm);
+      const name = document.getElementById("name")?.value.trim();
+      const email = document.getElementById("email")?.value.trim();
+      const subject = document.getElementById("subject")?.value.trim();
+      const message = document.getElementById("message")?.value.trim();
 
-      const name = String(formData.get("name") || "").trim();
-      const email = String(formData.get("email") || "").trim();
-      const subject = String(formData.get("subject") || "").trim();
-      const message = String(formData.get("message") || "").trim();
+      if (!name || !email || !subject || !message) {
+        if (formStatus) {
+          formStatus.textContent =
+            "Please complete all fields before continuing.";
+          formStatus.classList.add("error");
+        }
+
+        return;
+      }
 
       if (name.length < 2) {
-        formStatus.textContent =
-          "Please enter your name (at least 2 characters).";
-        formStatus.classList.add("error");
+        if (formStatus) {
+          formStatus.textContent =
+            "Please enter a name with at least 2 characters.";
+          formStatus.classList.add("error");
+        }
+
         return;
       }
 
       if (message.length < 10) {
-        formStatus.textContent =
-          "Please write a message with at least 10 characters.";
-        formStatus.classList.add("error");
+        if (formStatus) {
+          formStatus.textContent =
+            "Please enter a message with at least 10 characters.";
+          formStatus.classList.add("error");
+        }
+
         return;
       }
 
+      // Prepare an email using the visitor's default email application
       const recipient = "rqnbk123@gmail.com";
 
       const emailSubject = encodeURIComponent(
-        `Portfolio contact: ${subject}`
+        `Portfolio Contact: ${subject}`
       );
 
       const emailBody = encodeURIComponent(
-        `Hello Rukhsar,\n\n${message}\n\n` +
-        `From: ${name}\n` +
-        `Reply email: ${email}\n`
+        `Hello Rukhsar,\n\n` +
+        `My name is: ${name}\n` +
+        `My email is: ${email}\n\n` +
+        `Message:\n${message}\n\n` +
+        `Sent from your portfolio website.`
       );
 
-      const mailtoLink =
-        `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+      const mailtoURL =
+        `mailto:${recipient}` +
+        `?subject=${emailSubject}` +
+        `&body=${emailBody}`;
 
-      formStatus.textContent =
-        "Opening your email app. Please send the message there.";
-      formStatus.classList.add("success");
+      if (formStatus) {
+        formStatus.textContent =
+          "Opening your email application. Please send the email there.";
+        formStatus.classList.add("success");
+      }
 
-      window.location.href = mailtoLink;
+      // Open the visitor's email application
+      window.location.href = mailtoURL;
     });
   }
+
+  // ========================================
+  // EMAIL ADDRESS COPY SUPPORT
+  // ========================================
+
+  const emailLink = document.querySelector(".email-link");
+
+  if (emailLink) {
+    emailLink.setAttribute(
+      "aria-label",
+      "Send an email to rqnbk123@gmail.com"
+    );
+  }
+
+  // ========================================
+  // SOCIAL LINKS
+  // ========================================
+
+  const socialLinks = document.querySelectorAll(".social-link");
+
+  socialLinks.forEach((link) => {
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+
+  // ========================================
+  // BACK TO TOP
+  // ========================================
+
+  const backToTop = document.querySelector(".back-to-top");
+
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
+    });
+  }
+
+  // ========================================
+  // SKILL BAR ANIMATIONS
+  // ========================================
+
+  const skillBars = document.querySelectorAll(".skill-track span");
+
+  if ("IntersectionObserver" in window && !reducedMotion) {
+    skillBars.forEach((bar) => {
+      const finalWidth = getComputedStyle(bar).width;
+
+      bar.dataset.finalWidth = finalWidth;
+      bar.style.width = "0";
+
+      const skillObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const skillBar = entry.target;
+
+              skillBar.style.transition = "width 1s ease";
+              skillBar.style.width = skillBar.dataset.finalWidth;
+
+              observer.unobserve(skillBar);
+            }
+          });
+        },
+        {
+          threshold: 0.4,
+        }
+      );
+
+      skillObserver.observe(bar);
+    });
+  }
+
+  // ========================================
+  // INITIALIZE PAGE
+  // ========================================
+
+  document.body.classList.add("page-loaded");
 });
