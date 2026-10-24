@@ -2,40 +2,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Rukhsar Qalandarzada | Portfolio</title>
 
   <meta
     name="description"
-    content="Explore the portfolio of Rukhsar Qalandarzada, a creative web developer passionate about building modern and responsive websites."
-  />
+    content="Explore the portfolio of Rukhsar Qalandarzada, a web developer learning to build modern, responsive websites."
+  >
 
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#0b1020">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 
   <style>
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 20px;
+      scroll-padding-top: 90px;
     }
 
-    #home {
-      scroll-margin-top: 20px;
+    section[id] {
+      scroll-margin-top: 90px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Background decoration -->
   <div class="background-glow glow-one"></div>
   <div class="background-glow glow-two"></div>
 
-  <!-- Header / Navbar -->
+  <!-- HEADER -->
   <header class="header">
-    <nav class="navbar container">
+    <nav class="navbar container" aria-label="Main navigation">
       <a href="#home" class="logo" aria-label="Go to Home">
         R<span>Q</span>.
       </a>
@@ -68,13 +67,8 @@
   </header>
 
   <main>
-    <!-- Home / Hero -->
-    <!-- IMPORTANT: id="home" belongs on this section -->
-    <section
-      class="hero section"
-      id="home"
-      aria-labelledby="hero-title"
-    >
+    <!-- HOME -->
+    <section class="hero section" id="home" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-content reveal">
           <div class="availability">
@@ -90,7 +84,7 @@
           </h1>
 
           <h2 class="hero-role">
-            Creative <span>Web Developer</span>
+            Aspiring <span>Web Developer</span>
           </h2>
 
           <p class="hero-description">
@@ -107,6 +101,15 @@
             <a href="#contact" class="button button-secondary">
               Contact Me
             </a>
+
+            <!-- DOWNLOAD CV -->
+            <a
+              href="cv.pdf"
+              class="button button-secondary"
+              download="Rukhsar_Qalandarzada_CV.pdf"
+            >
+              Download CV <span aria-hidden="true">↓</span>
+            </a>
           </div>
 
           <div class="hero-details">
@@ -116,16 +119,15 @@
             </div>
 
             <div>
-              <span class="detail-label">INTEREST</span>
-              <strong>Creative Design</strong>
+              <span class="detail-label">LOCATION</span>
+              <strong>Kabul, Afghanistan</strong>
             </div>
           </div>
         </div>
 
-        <!-- Decorative visual -->
+        <!-- DECORATIVE CODE WINDOW -->
         <div class="hero-visual reveal">
           <div class="visual-grid"></div>
-
           <div class="orbit orbit-one"></div>
           <div class="orbit orbit-two"></div>
 
@@ -142,28 +144,37 @@
 
             <div class="code-content">
               <p><span class="code-purple">const</span> developer = {</p>
+
               <p class="indent">
                 name: <span class="code-green">"Rukhsar"</span>,
               </p>
+
               <p class="indent">
-                passion: <span class="code-green">"Web Design"</span>,
+                passion: <span class="code-green">"Web Development"</span>,
               </p>
+
               <p class="indent">
                 creative: <span class="code-orange">true</span>,
               </p>
+
               <p class="indent">
                 learning: <span class="code-orange">true</span>
               </p>
+
               <p>};</p>
-              <br />
+
+              <br>
+
               <p>
                 <span class="code-purple">function</span>
                 <span class="code-blue">create</span>() {
               </p>
+
               <p class="indent">
                 <span class="code-purple">return</span>
                 <span class="code-green">"Something amazing!"</span>;
               </p>
+
               <p>}</p>
             </div>
 
@@ -202,45 +213,47 @@
       </a>
     </section>
 
-    <!-- About -->
+    <!-- ABOUT -->
     <section class="section about-section" id="about">
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">GET TO KNOW ME</p>
-          <h2>About <span class="gradient-text">Me</span></h2>
+
+          <h2>
+            About <span class="gradient-text">Me</span>
+          </h2>
+
           <p>
             A little introduction to who I am and what I love doing.
           </p>
         </div>
 
         <div class="about-grid">
-          <div class="about-card reveal">
+          <article class="about-card reveal">
             <div class="card-icon">✦</div>
 
             <h3>Who I Am</h3>
 
             <p>
-              My name is Rukhsar Qalandarzada. I am passionate about
-              technology, creativity, and building websites that
-              look professional and work smoothly on different devices.
+              My name is Rukhsar Qalandarzada. I am learning web
+              development and enjoy creating websites that look
+              professional and work smoothly on different devices.
             </p>
 
             <p>
               I enjoy learning new development techniques, solving
-              problems, and improving my skills through practical
-              projects.
+              problems, and improving my skills through practical projects.
             </p>
-          </div>
+          </article>
 
-          <div class="about-card about-highlight reveal">
+          <article class="about-card about-highlight reveal">
             <div class="card-icon">⌘</div>
 
             <h3>My Approach</h3>
 
             <p>
-              I believe a good website should combine attractive
-              design, clear content, accessibility, and reliable
-              functionality.
+              I believe a good website should combine attractive design,
+              clear content, accessibility, and reliable functionality.
             </p>
 
             <div class="approach-list">
@@ -248,7 +261,7 @@
               <div><span>02</span> Design the experience</div>
               <div><span>03</span> Build and improve</div>
             </div>
-          </div>
+          </article>
         </div>
 
         <div class="info-strip reveal">
@@ -279,14 +292,18 @@
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- SKILLS -->
     <section class="section skills-section" id="skills">
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">WHAT I WORK WITH</p>
-          <h2>My <span class="gradient-text">Skills</span></h2>
+
+          <h2>
+            My <span class="gradient-text">Skills</span>
+          </h2>
+
           <p>
-            Technologies and creative tools I use to build web experiences.
+            Technologies and creative tools I am learning to use.
           </p>
         </div>
 
@@ -296,10 +313,13 @@
               <span class="skill-symbol html-symbol">5</span>
               <span class="skill-category">STRUCTURE</span>
             </div>
+
             <h3>HTML5</h3>
+
             <p>
               Creating structured, accessible, and meaningful web pages.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 85%"></span>
             </div>
@@ -310,10 +330,13 @@
               <span class="skill-symbol css-symbol">✳</span>
               <span class="skill-category">DESIGN</span>
             </div>
+
             <h3>CSS3</h3>
+
             <p>
               Styling layouts, responsive interfaces, and visual effects.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 80%"></span>
             </div>
@@ -324,10 +347,13 @@
               <span class="skill-symbol js-symbol">JS</span>
               <span class="skill-category">INTERACTION</span>
             </div>
+
             <h3>JavaScript</h3>
+
             <p>
               Adding dynamic behavior and interactive features to websites.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 65%"></span>
             </div>
@@ -338,10 +364,13 @@
               <span class="skill-symbol react-symbol">⚛</span>
               <span class="skill-category">DEVELOPMENT</span>
             </div>
+
             <h3>React</h3>
+
             <p>
-              Building reusable components and interactive user interfaces.
+              Learning reusable components and interactive user interfaces.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 60%"></span>
             </div>
@@ -352,10 +381,13 @@
               <span class="skill-symbol design-symbol">◇</span>
               <span class="skill-category">EXPERIENCE</span>
             </div>
+
             <h3>Responsive Design</h3>
+
             <p>
               Making websites adapt to mobile, tablet, and desktop screens.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 80%"></span>
             </div>
@@ -366,10 +398,13 @@
               <span class="skill-symbol problem-symbol">✧</span>
               <span class="skill-category">CREATIVITY</span>
             </div>
+
             <h3>Problem Solving</h3>
+
             <p>
               Breaking down challenges and finding practical solutions.
             </p>
+
             <div class="skill-track">
               <span style="--skill-width: 75%"></span>
             </div>
@@ -377,346 +412,363 @@
         </div>
 
         <p class="skills-note">
-          Skill levels are illustrative. Update them to reflect your
+          Skill levels are approximate. Update them to reflect your
           actual experience.
         </p>
       </div>
     </section>
 
-<!-- ================= PROJECTS ================= -->
-<section class="section projects-section" id="projects">
-  <div class="container">
+    <!-- PROJECTS -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">MY RECENT WORK</p>
 
-    <div class="section-heading reveal">
-      <p class="eyebrow">MY RECENT WORK</p>
-      <h2>Featured <span class="gradient-text">Projects</span></h2>
-      <p>
-        A selection of projects showcasing my web development,
-        creativity, and passion for building useful digital experiences.
-      </p>
-    </div>
-
-    <div class="projects-grid">
-
-      <!-- Project 1: Calculator -->
-      <article class="project-card reveal">
-        <div class="project-preview preview-one calculator-preview">
-          <a
-            class="calculator-image-link"
-            href="https://github.com/rukhsarqalandarzada1238/Calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View Calculator project on GitHub"
-          >
-            <img
-              src="./image/WhatsApp%20Image%202026-10-20%20at%209.36.41%20PM.jpeg"
-              alt="Math Magician Calculator project preview"
-              class="calculator-image"
-              loading="lazy"
-            />
-          </a>
-          <span class="project-number">PROJECT 01</span>
-        </div>
-
-        <div class="project-info">
-          <div class="project-meta">
-            <span>Web Development</span>
-            <span>01</span>
-          </div>
-
-          <h3>Calculator — Math Magician</h3>
+          <h2>
+            Featured <span class="gradient-text">Projects</span>
+          </h2>
 
           <p>
-            An interactive calculator website with a clean interface,
-            responsive layout, and a user-friendly keypad for performing
-            mathematical calculations.
+            A selection of projects showcasing my web development,
+            creativity, and passion for building useful digital experiences.
           </p>
-
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-          </div>
-
-          <a
-            class="project-link"
-            href="https://github.com/rukhsarqalandarzada1238/Calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project on GitHub <span>↗</span>
-          </a>
-        </div>
-      </article>
-
-     <!-- Project 2: MyReactHub -->
-<article class="project-card reveal">
-  <div class="project-preview preview-two project-image-preview">
-
-    <a
-      class="project-image-link"
-      href="https://github.com/rukhsarqalandarzada1238/myreacthub"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="View MyReactHub project on GitHub"
-    >
-      <img
-        src="/image/hub.png"
-        alt="MyReactHub React project preview"
-        class="project-image"
-        loading="lazy"
-      />
-    </a>
-
-    <span class="project-number">PROJECT 02</span>
-  </div>
-
-  <div class="project-info">
-    <div class="project-meta">
-      <span>React Development</span>
-      <span>02</span>
-    </div>
-
-    <h3>MyReactHub</h3>
-
-    <p>
-      A React project showcasing component-based development,
-      reusable UI elements, and modern frontend development
-      practices.
-    </p>
-
-    <div class="project-tags">
-      <span>React</span>
-      <span>JavaScript</span>
-      <span>CSS</span>
-    </div>
-
-    <a
-      class="project-link"
-      href="https://github.com/rukhsarqalandarzada1238/myreacthub"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      View Project on GitHub <span>↗</span>
-    </a>
-  </div>
-</article>
-
-        <!-- Project 3: My Portfolio -->
-      <article class="project-card reveal">
-        <div class="project-preview preview-three project-image-preview">
-          <a
-            class="project-image-link"
-            href="https://github.com/rukhsarqalandarzada1238/my-portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View My Portfolio project on GitHub"
-          >
-            <img
-              src="./image/portfolio pic.png"
-              alt="Rukhsar Qalandarzada personal portfolio website preview"
-              class="project-image"
-              loading="lazy"
-            />
-          </a>
-
-          <span class="project-number">PROJECT 03</span>
         </div>
 
-        <div class="project-info">
-          <div class="project-meta">
-            <span>Web Development</span>
-            <span>03</span>
-          </div>
+        <div class="projects-grid">
+          <!-- PROJECT 1 -->
+          <article class="project-card reveal">
+            <div class="project-preview preview-one calculator-preview">
+              <a
+                class="calculator-image-link"
+                href="https://github.com/rukhsarqalandarzada1238/Calculator"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Calculator project on GitHub"
+              >
+                <img
+                  src="image/WhatsApp%20Image%202026-10-20%20at%209.36.41%20PM.jpeg"
+                  alt="Calculator project preview"
+                  class="calculator-image"
+                  loading="lazy"
+                >
+              </a>
 
-          <h3>My Personal Portfolio</h3>
+              <span class="project-number">PROJECT 01</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-meta">
+                <span>Web Development</span>
+                <span>01</span>
+              </div>
+
+              <h3>Calculator — Math Magician</h3>
+
+              <p>
+                An interactive calculator website with a clean interface,
+                responsive layout, and user-friendly keypad for performing
+                mathematical calculations.
+              </p>
+
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/rukhsarqalandarzada1238/Calculator"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article class="project-card reveal">
+            <div class="project-preview preview-two project-image-preview">
+              <a
+                class="project-image-link"
+                href="https://github.com/rukhsarqalandarzada1238/myreacthub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View MyReactHub project on GitHub"
+              >
+                <img
+                  src="image/hub.png"
+                  alt="MyReactHub project preview"
+                  class="project-image"
+                  loading="lazy"
+                >
+              </a>
+
+              <span class="project-number">PROJECT 02</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-meta">
+                <span>React Development</span>
+                <span>02</span>
+              </div>
+
+              <h3>MyReactHub</h3>
+
+              <p>
+                A React project showcasing component-based development,
+                reusable UI elements, and modern frontend practices.
+              </p>
+
+              <div class="project-tags">
+                <span>React</span>
+                <span>JavaScript</span>
+                <span>CSS</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/rukhsarqalandarzada1238/myreacthub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 3 -->
+          <article class="project-card reveal">
+            <div class="project-preview preview-three project-image-preview">
+              <a
+                class="project-image-link"
+                href="https://github.com/rukhsarqalandarzada1238/my-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View personal portfolio project on GitHub"
+              >
+                <img
+                  src="image/portfolio pic.png"
+                  alt="Personal portfolio website preview"
+                  class="project-image"
+                  loading="lazy"
+                >
+              </a>
+
+              <span class="project-number">PROJECT 03</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-meta">
+                <span>Web Development</span>
+                <span>03</span>
+              </div>
+
+              <h3>My Personal Portfolio</h3>
+
+              <p>
+                A modern and responsive portfolio showcasing my skills,
+                projects, background, and contact information.
+              </p>
+
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Responsive Design</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/rukhsarqalandarzada1238/my-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub <span>↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">LET'S CONNECT</p>
+
+          <h2>
+            Get In <span class="gradient-text">Touch</span>
+          </h2>
 
           <p>
-            A modern and responsive personal portfolio showcasing my
-            skills, projects, background, and contact information.
-            Designed with a clean interface and interactive elements.
+            Have an idea or a project in mind? Let's discuss how we can
+            bring it to life.
           </p>
-
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Responsive Design</span>
-          </div>
-
-          <a
-            class="project-link"
-            href="https://github.com/rukhsarqalandarzada1238/my-portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project on GitHub <span>↗</span>
-          </a>
         </div>
-      </article>
 
-    </div>
-  </div>
-</section>
-<!-- End Projects -->
+        <div class="contact-card reveal">
+          <!-- CONTACT INFORMATION -->
+          <div class="contact-content">
+            <p class="eyebrow">HAVE AN IDEA?</p>
 
-<!-- ================= CONTACT ================= -->
-<section class="section contact-section" id="contact">
-  <div class="container">
+            <h2>
+              Let's create something
+              <span class="gradient-text">meaningful.</span>
+            </h2>
 
-    <div class="section-heading reveal">
-      <p class="eyebrow">LET'S CONNECT</p>
-      <h2>Get In <span class="gradient-text">Touch</span></h2>
-      <p>
-        Have an idea or a project in mind? Let's discuss how we can
-        bring it to life.
-      </p>
-    </div>
+            <p>
+              Have a project idea, a question, or an opportunity to
+              collaborate? I'd love to hear from you.
+            </p>
 
-    <div class="contact-card reveal">
+            <a class="email-link" href="mailto:rqnbk123@gmail.com">
+              <span class="email-icon" aria-hidden="true">✉</span>
 
-      <!-- Left side: Contact details -->
-      <div class="contact-content">
-        <p class="eyebrow">HAVE AN IDEA?</p>
+              <span>
+                <small>EMAIL ME AT</small>
+                <strong>rqnbk123@gmail.com</strong>
+              </span>
 
-        <h2>
-          Let's create something
-          <span class="gradient-text">meaningful.</span>
-        </h2>
+              <span class="email-arrow" aria-hidden="true">↗</span>
+            </a>
 
-        <p>
-          Have a project idea, a question, or an opportunity to
-          collaborate? I'd love to hear from you.
-        </p>
+            <div class="social-links" aria-label="Social profiles">
+              <a
+                class="social-link"
+                href="https://github.com/rukhsarqalandarzada1238"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub profile"
+              >
+                <span class="social-link-icon" aria-hidden="true">GH</span>
 
-        <a class="email-link" href="mailto:rqnbk123@gmail.com">
-          <span class="email-icon" aria-hidden="true">✉</span>
+                <span>
+                  <small>GITHUB</small>
+                  <strong>View my GitHub</strong>
+                </span>
 
-          <span>
-            <small>EMAIL ME AT</small>
-            <strong>rqnbk123@gmail.com</strong>
-          </span>
+                <span class="social-link-arrow" aria-hidden="true">↗</span>
+              </a>
 
-          <span class="email-arrow" aria-hidden="true">↗</span>
-        </a>
+              <a
+                class="social-link"
+                href="https://www.linkedin.com/in/rukhsar-qalandarzada-84010624b"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my LinkedIn profile"
+              >
+                <span class="social-link-icon linkedin-icon" aria-hidden="true">in</span>
 
-        <div class="social-links" aria-label="Social profiles">
-          <a
-            class="social-link"
-            href="https://github.com/rukhsarqalandarzada1238"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my GitHub profile"
-          >
-            <span class="social-link-icon" aria-hidden="true">GH</span>
-            <span>
-              <small>GITHUB</small>
-              <strong>View my GitHub</strong>
-            </span>
-            <span class="social-link-arrow" aria-hidden="true">↗</span>
-          </a>
+                <span>
+                  <small>LINKEDIN</small>
+                  <strong>Connect with me</strong>
+                </span>
 
-          <a
-            class="social-link"
-            href="https://www.linkedin.com/in/rukhsar-qalandarzada-84010624b"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my LinkedIn profile"
-          >
-            <span class="social-link-icon linkedin-icon" aria-hidden="true">in</span>
-            <span>
-              <small>LINKEDIN</small>
-              <strong>Connect with me</strong>
-            </span>
-            <span class="social-link-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right side: Contact form -->
-      <div class="contact-form-area">
-        <h3>Send a Message</h3>
-
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                autocomplete="name"
-                minlength="2"
-                required
-              />
+                <span class="social-link-arrow" aria-hidden="true">↗</span>
+              </a>
             </div>
 
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                autocomplete="email"
-                required
-              />
-            </div>
+            <a
+              href="cv.pdf"
+              class="button button-secondary"
+              download="Rukhsar_Qalandarzada_CV.pdf"
+            >
+              Download My CV <span>↓</span>
+            </a>
           </div>
 
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              placeholder="What is this about?"
-              required
-            />
+          <!-- CONTACT FORM -->
+          <div class="contact-form-area">
+            <h3>Send a Message</h3>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                    minlength="2"
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="What is this about?"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your idea..."
+                  minlength="10"
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="button button-primary submit-button"
+              >
+                Send Email <span>↗</span>
+              </button>
+
+              <p
+                class="form-status"
+                id="formStatus"
+                role="status"
+                aria-live="polite"
+              ></p>
+
+              <p class="form-note">
+                Your email app will open to send the message.
+              </p>
+            </form>
           </div>
-
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              placeholder="Tell me about your idea..."
-              minlength="10"
-              required
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="button button-primary submit-button"
-          >
-            Send Email <span>↗</span>
-          </button>
-
-          <p
-            class="form-status"
-            id="formStatus"
-            role="status"
-            aria-live="polite"
-          ></p>
-
-          <p class="form-note">
-            Your email app will open to send the message.
-          </p>
-        </form>
+        </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </div>
-</section>
-<!-- End Contact -->
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-content">
-      <a href="#home" class="logo footer-logo">R<span>Q</span>.</a>
+      <a href="#home" class="logo footer-logo">
+        R<span>Q</span>.
+      </a>
 
       <p>
         Designed and built with care by
